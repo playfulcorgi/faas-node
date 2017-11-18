@@ -10,6 +10,7 @@
 // https://stackoverflow.com/questions/6912584/how-to-get-get-query-string-variables-in-express-js-on-node-js
 // https://stackoverflow.com/questions/6912584/how-to-get-get-query-string-variables-in-express-js-on-node-js
 // https://www.npmjs.com/package/qs
+// https://github.com/expressjs/express/issues/1291
 
 const connect = require('connect')
 const http = require('http')
@@ -35,12 +36,25 @@ app.use((request, response) => {
 	const urlParts = url.parse(request.url, true)
 	request.query = urlParts.query
 	response.setHeader('Content-Type', 'text/plain')
-	// console.log(request.query)
-	// response.end('Hello from Connect!\n')
-	// response.json({
-	// 	someKey: 'someValue of key'
-	// })
+	require('/app/index.js').handler(request, response)
 })
+app.use((error, request, response, next) => {
+	console.log('Error received.')
+	response.statusCode = 500
+	// TODO: The following response might not be the best for 500.
+	response.setHeader('Content-Type', 'text/plain')
+  response.json({message: `Unhandled error occurred.`})
+});
 const server = http.createServer(app)
+server.on('close', () => {
+	console.log(`Server is closing on port ${serverPort}.`)
+})
+process.on('SIGINT', function() {
+	server.close(() => {
+		console.log(`Server closed on port ${serverPort}.`)
+	});
+});
 server.setTimeout(10000)// The server will stop any stuck or long request handlers.
-server.listen(serverPort)
+server.listen(serverPort, () => {
+	console.log(`HTTP server listening on port ${serverPort}.`)
+})
