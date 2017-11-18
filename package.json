@@ -11,9 +11,11 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "connect": "^3.6.5",
+    "connect-send-json": "^1.0.0",
     "connect-timeout": "^1.9.0",
     "cookie-parser": "^1.4.3",
     "morgan": "^1.9.0",
+    "qs": "^6.5.1",
     "response-time": "^2.3.2"
   }
 }
