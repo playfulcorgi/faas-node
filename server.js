@@ -48,7 +48,7 @@ if (cluster.isMaster) {
 			console.error(`error ${domainError.stack}`)
 			try {
 				const killtimer = setTimeout(() => {
-					console.log(`Server fork didn't close gracefully, trying to close server process.`)
+					console.error(`Server fork didn't close gracefully, trying to close server process.`)
 					process.exit(1)
 				}, 30000)
 				killtimer.unref()// The timer won't block the main thread from exiting before completing.
