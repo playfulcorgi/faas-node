@@ -63,7 +63,10 @@ if (cluster.isMaster) {
 	
 		d.run(next)
 	})
-	app.use(responseTime())
+	app.use(responseTime((request, response, time) => {
+		// TODO: For an unknown reason, time of first request is recorded as an arbitrary 10s or thereabouts.
+		console.log(`Response time was ${Math.floor(time)}ms.`)
+	}))
 	app.use(morgan('combined'))
 	// Maybe I'm using too many parsers (bodyParser). Maybe parsing a request should be up to the handler instead to save resources, so the handler would only parse what he needs.
 	app.use(bodyParser.urlencoded({extended: false}))
