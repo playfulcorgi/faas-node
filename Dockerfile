@@ -1,4 +1,4 @@
-FROM node:9
+FROM node:9.2.0
 
 WORKDIR /requestHandler
 COPY package.json .
