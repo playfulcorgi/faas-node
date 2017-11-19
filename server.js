@@ -1,3 +1,4 @@
+// sources:
 // https://github.com/awslabs/aws-serverless-express/blob/master/index.js
 // https://expressjs.com/en/resources/middleware/timeout.html
 // https://github.com/atlantanodejs/site-app/wiki/Connect-vs-Express
