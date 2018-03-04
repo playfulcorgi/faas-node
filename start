@@ -1,0 +1,16 @@
+#!/bin/bash
+cd /logic
+if [ "$WATCH" = "true" ] ; then
+  absoluteHandlerPath=$(dirname "`cd \"/app\" && readlink -f \"$HANDLER_FILE_SUBPATH\"`")
+  # Run extra command in the background if it was provided as arguments for the ENTRYPOINT (the one in Dockerfile).
+  if [ $# -gt 0 ]; then
+    # Assume background task will work correctly.
+    (cd /app && "$@") &
+  fi
+  # ./node_modules/.bin/nodemon --watch "$absoluteHandlerPath" ./server.js
+  ./node_modules/.bin/nodemon --watch "$absoluteHandlerPath" ./server.js
+else
+  # Running extra command in the foreground will ensure the server starts at the right time.
+  (cd /app && "$@")
+  node server.js
+fi
