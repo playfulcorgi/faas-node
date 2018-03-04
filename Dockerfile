@@ -1,12 +1,9 @@
-FROM node:9.2.0
-
-WORKDIR /requestHandler
-COPY package.json .
-COPY package-lock.json .
-RUN npm i
-COPY server.js .
+FROM node:9.7.1
+ENV HANDLER_FILE_SUBPATH="index.js"
+ENV WATCH="true"
 EXPOSE 80
+WORKDIR /logic
+COPY * ./
+RUN npm i
 WORKDIR /app
-COPY "default-index.js" "index.js"
-WORKDIR /app
-ENTRYPOINT node /requestHandler/server
+ENTRYPOINT ["/logic/start"]

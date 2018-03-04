@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "description": "",
   "main": "server.js",
+  "private": true,
+  "repository": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docker-run:watch": "docker run --rm -ti -p 8888:80 playfulcorgi/faas-node",
+    "docker-run:no-watch": "docker run --rm -ti -p 8888:80 -e WATCH=false playfulcorgi/faas-node",
+    "docker-build": "docker build -t playfulcorgi/faas-node ."
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +19,9 @@
     "connect-timeout": "^1.9.0",
     "cookie-parser": "^1.4.3",
     "morgan": "^1.9.0",
+    "nodemon": "^1.17.1",
     "qs": "^6.5.1",
-    "response-time": "^2.3.2"
+    "response-time": "^2.3.2",
+    "serialize-error": "^2.1.0"
   }
 }
