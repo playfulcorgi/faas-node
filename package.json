@@ -6,8 +6,6 @@
   "private": true,
   "repository": {},
   "scripts": {
-    "docker-run:watch": "docker run --rm -ti -p 8888:80 playfulcorgi/faas-node",
-    "docker-run:no-watch": "docker run --rm -ti -p 8888:80 -e WATCH=false playfulcorgi/faas-node",
     "docker-build": "docker build -t playfulcorgi/faas-node ."
   },
   "author": "",
