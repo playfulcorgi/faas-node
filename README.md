@@ -59,11 +59,18 @@ ENV HANDLER_FILE_SUBPATH="dist/index.js"
 CMD ["npm", "run", "watch"]
 ```
 
+For a sample Docker image using FN, check [here][6].
+
+
+
+
+
 [1]: https://github.com/senchalabs/connect
 [2]: https://en.wikipedia.org/wiki/Function_as_a_service
 [3]: https://github.com/remy/nodemon/
 [4]: https://webpack.js.org/
 [5]: https://babeljs.io/
+[6]: https://hub.docker.com/r/playfulcorgi/faas-node-sample/
 
 <!-- 
 References:
