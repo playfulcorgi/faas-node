@@ -1,4 +1,5 @@
 /* eslint-disable global-require */
+require('source-map-support').install()
 const cluster = require('cluster')
 const serverPort = 80
 
@@ -79,21 +80,16 @@ if (cluster.isMaster) {
     request.query = urlParts.query
     response.setHeader('Content-Type', 'text/plain')
     const handlerPath = resolve('/app', process.env.HANDLER_FILE_SUBPATH)
-    try {
-      // eslint-disable-next-line import/no-dynamic-require
-      require(handlerPath)(request, response)
-    } catch (error) {
-      response.statusCode = 500
-      response.json({
-        message: 'Error trying to handle request.',
-        error: serializeError(error)
-      })
-    }
+    // eslint-disable-next-line import/no-dynamic-require
+    require(handlerPath)(request, response)
   })
   app.use((error, request, response, next) => {
     console.log('Error received.')
     response.statusCode = 500
-    response.json({ message: `Unhandled error occurred.` })
+    response.json({
+      message: 'Error trying to handle request.',
+      error: serializeError(error)
+    })
   })
 
   server.on('close', () => {

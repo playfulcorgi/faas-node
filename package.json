@@ -20,6 +20,8 @@
     "nodemon": "^1.17.1",
     "qs": "^6.5.1",
     "response-time": "^2.3.2",
-    "serialize-error": "^2.1.0"
-  }
+    "serialize-error": "^2.1.0",
+    "source-map-support": "^0.5.3"
+  },
+  "devDependencies": {}
 }
