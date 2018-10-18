@@ -1,8 +1,8 @@
 # playfulcorgi/faas-node
 
-playfulcorgi/faas-node (FN) is a Docker image that simulates a [FaaS][2] environment. It runs a tiny [Connect][1] server to accept HTTP (not HTTPS) requests and relays them to a handler file written in JavaScript.
+playfulcorgi/faas-node (f-n) is a Docker image that simulates a [FaaS][2] environment. It runs a tiny [Connect][1] server to accept HTTP (not HTTPS) requests and relays them to a handler file written in JavaScript.
 
-## Default Environment Variables Used By FN
+## Default Environment Variables Used By f-n
 
 |Key|Description|Default Value|Example of custom value|
 |-|-|-|-|
@@ -47,9 +47,9 @@ docker run --name my-faas -v /my-faas-sources:/app -p 80:80 -e WATCH=false playf
 
 In production, it may be a better to stop watching the handler's directory.
 
-## Example Docker Image Using FN As Base
+## Example Docker Image Using f-n As Base
 
-This image will run `npm run watch` inside /app to generate dist/index.js and tell FN to watch dist for changes. FN calls the command provided as CMD in Docker in the background while running the FaaS server in the foreground.
+This image will run `npm run watch` inside /app to generate dist/index.js and tell f-n to watch dist for changes. f-n calls the command provided as CMD in Docker in the background while running the FaaS server in the foreground.
 
 ```dockerfile
 FROM playfulcorgi/faas-node
@@ -59,7 +59,7 @@ ENV HANDLER_FILE_SUBPATH="dist/index.js"
 CMD ["npm", "run", "watch"]
 ```
 
-For a sample Docker image using FN, check [here][6].
+For a sample Docker image using f-n, check [here][6].
 
 
 
@@ -72,23 +72,22 @@ For a sample Docker image using FN, check [here][6].
 [5]: https://babeljs.io/
 [6]: https://hub.docker.com/r/playfulcorgi/faas-node-sample/
 
-<!-- 
+
 References:
-https://github.com/awslabs/aws-serverless-express/blob/master/index.js
-https://expressjs.com/en/resources/middleware/timeout.html
-https://github.com/atlantanodejs/site-app/wiki/Connect-vs-Express
-https://github.com/senchalabs/connect
-https://www.npmjs.com/package/connect-timeout
-https://www.npmjs.com/package/response-time
-https://www.npmjs.com/package/cookie-parser
-https://www.npmjs.com/package/body-parser
-https://github.com/openfaas/faas/blob/master/sample-functions/NodeInfo/main.js
-https://stackoverflow.com/questions/6912584/how-to-get-get-query-string-variables-in-express-js-on-node-js
-https://stackoverflow.com/questions/6912584/how-to-get-get-query-string-variables-in-express-js-on-node-js
-https://www.npmjs.com/package/qs
-https://github.com/expressjs/express/issues/1291
-https://nodejs.org/api/domain.html#domain_warning_don_t_ignore_errors
-https://github.com/baryshev/connect-domain/blob/master/lib/connect-domain.js
-https://github.com/nodejs/node/issues/10843
-https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/
--->
+- https://github.com/awslabs/aws-serverless-express/blob/master/index.js
+- https://expressjs.com/en/resources/middleware/timeout.html
+- https://github.com/atlantanodejs/site-app/wiki/Connect-vs-Express
+- https://github.com/senchalabs/connect
+- https://www.npmjs.com/package/connect-timeout
+- https://www.npmjs.com/package/response-time
+- https://www.npmjs.com/package/cookie-parser
+- https://www.npmjs.com/package/body-parser
+- https://github.com/openfaas/faas/blob/master/sample-functions/NodeInfo/main.js
+- https://stackoverflow.com/questions/6912584/how-to-get-get-query-string-variables-in-express-js-on-node-js
+- https://stackoverflow.com/questions/6912584/how-to-get-get-query-string-variables-in-express-js-on-node-js
+- https://www.npmjs.com/package/qs
+- https://github.com/expressjs/express/issues/1291
+- https://nodejs.org/api/domain.html#domain_warning_don_t_ignore_errors
+- https://github.com/baryshev/connect-domain/blob/master/lib/connect-domain.js
+- https://github.com/nodejs/node/issues/10843
+- https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/
