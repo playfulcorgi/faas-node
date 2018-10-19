@@ -1,6 +1,6 @@
 # playfulcorgi/faas-node
 
-playfulcorgi/faas-node (f-n) is a Docker image that simulates a [FaaS][2] environment. It runs a tiny [Connect][1] server to accept HTTP (not HTTPS) requests and relays them to a handler file written in JavaScript.
+playfulcorgi/faas-node (f-n) is a [Docker image](https://hub.docker.com/r/playfulcorgi/faas-node/) that simulates a [FaaS][2] environment. It runs a tiny [Connect][1] server to accept HTTP (not HTTPS) requests and relays them to a handler file written in JavaScript.
 
 ## Default Environment Variables Used By f-n
 
