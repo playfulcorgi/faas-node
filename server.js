@@ -81,7 +81,17 @@ if (cluster.isMaster) {
     response.setHeader('Content-Type', 'text/plain')
     const handlerPath = resolve('/app', process.env.HANDLER_FILE_SUBPATH)
     // eslint-disable-next-line import/no-dynamic-require
-    require(handlerPath)(request, response)
+    const handlerModule = require(handlerPath)
+    let handlerFunction
+    if (typeof handlerModule === 'function') {
+      handlerFunction = handlerModule
+    } else if (typeof handlerModule === 'object' && typeof handlerModule.default === 'function') {
+      handlerFunction = handlerModule.default
+    } else {
+      throw new Error('handler must be a function')
+    }
+
+    handlerFunction(request, response)
   })
   app.use((error, request, response, next) => {
     console.log('Error received.')
