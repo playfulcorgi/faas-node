@@ -74,7 +74,9 @@ if (cluster.isMaster) {
   app.use(bodyParser.json())
   app.use(bodyParser.raw())
   app.use(bodyParser.text())
-  app.use(send.json())
+  app.use(send.json({
+    debug: true
+  }))
   app.use('/', (request, response) => {
     const urlParts = url.parse(request.url, true)
     request.query = urlParts.query
