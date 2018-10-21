@@ -38,6 +38,7 @@ if (cluster.isMaster) {
   const server = http.createServer(app)
   const serializeError = require('serialize-error')
   const { resolve } = require('path')
+  const cors = require('cors')
 
   process.chdir('/app')
 
@@ -70,6 +71,9 @@ if (cluster.isMaster) {
     console.log(`Response time was ${Math.floor(time)}ms.`)
   }))
   app.use(morgan('combined'))
+  app.use(cors({
+    origin: true
+  }))
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
   app.use(bodyParser.raw())
