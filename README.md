@@ -29,7 +29,7 @@ module.exports = (request, response) => {
 }
 ```
 
-The handler needs to be compatible with Node >= 9.7.1 ([Babel][5] is not supported but can be use to generate the handler beforehand).
+The handler needs to be compatible with Node >= 9.7.1 ([Babel][5] is not supported but can be used to generate the handler beforehand).
 
 ### Running
 
@@ -41,11 +41,11 @@ Changing `HANDLER_FILE_SUBPATH` can be useful when source files are transpiled (
 
 ## Watch Example<a name="watchExample"></a>
 
+In production, it may be better to stop watching the handler's directory:
+
 ```bash
 docker run --name my-faas -v /my-faas-sources:/app -p 80:80 -e WATCH=false playfulcorgi/faas-node
 ```
-
-In production, it may be a better to stop watching the handler's directory.
 
 ## Example Docker Image Using f-n As Base
 
@@ -71,23 +71,3 @@ For a sample Docker image using f-n, check [here][6].
 [4]: https://webpack.js.org/
 [5]: https://babeljs.io/
 [6]: https://hub.docker.com/r/playfulcorgi/faas-node-sample/
-
-
-References:
-- https://github.com/awslabs/aws-serverless-express/blob/master/index.js
-- https://expressjs.com/en/resources/middleware/timeout.html
-- https://github.com/atlantanodejs/site-app/wiki/Connect-vs-Express
-- https://github.com/senchalabs/connect
-- https://www.npmjs.com/package/connect-timeout
-- https://www.npmjs.com/package/response-time
-- https://www.npmjs.com/package/cookie-parser
-- https://www.npmjs.com/package/body-parser
-- https://github.com/openfaas/faas/blob/master/sample-functions/NodeInfo/main.js
-- https://stackoverflow.com/questions/6912584/how-to-get-get-query-string-variables-in-express-js-on-node-js
-- https://stackoverflow.com/questions/6912584/how-to-get-get-query-string-variables-in-express-js-on-node-js
-- https://www.npmjs.com/package/qs
-- https://github.com/expressjs/express/issues/1291
-- https://nodejs.org/api/domain.html#domain_warning_don_t_ignore_errors
-- https://github.com/baryshev/connect-domain/blob/master/lib/connect-domain.js
-- https://github.com/nodejs/node/issues/10843
-- https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/
