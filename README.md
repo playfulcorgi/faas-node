@@ -34,7 +34,7 @@ The handler needs to be compatible with Node >= 9.7.1 ([Babel][5] is not support
 ### Running
 
 ```bash
-docker run --name my-faas -v /my-faas-sources:/app -p 80:80 -e HANDLER_FILE_SUBPATH="dist/main.js" playfulcorgi/faas-node
+docker run --name my-faas -v /my-faas-sources:/app -p 80:8888 -e HANDLER_FILE_SUBPATH="dist/main.js" playfulcorgi/faas-node
 ```
 
 Changing `HANDLER_FILE_SUBPATH` can be useful when source files are transpiled (ie. by Webpack or Gulp), before being used by the FaaS server. The transpiler will generate the /app/dist/main.js file.
@@ -44,7 +44,7 @@ Changing `HANDLER_FILE_SUBPATH` can be useful when source files are transpiled (
 In production, it may be better to stop watching the handler's directory:
 
 ```bash
-docker run --name my-faas -v /my-faas-sources:/app -p 80:80 -e WATCH=false playfulcorgi/faas-node
+docker run --name my-faas -v /my-faas-sources:/app -p 80:8888 -e WATCH=false playfulcorgi/faas-node
 ```
 
 ## Example Docker Image Using f-n As Base

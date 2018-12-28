@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 require('source-map-support').install()
 const cluster = require('cluster')
-const serverPort = 80
+const serverPort = 8888
 
 if (cluster.isMaster) {
   console.log(`Forking a new server.`)
