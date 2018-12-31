@@ -8,7 +8,7 @@
   "scripts": {
     "docker-build": "docker build -t playfulcorgi/faas-node ."
   },
-  "author": "",
+  "author": "playfulcorgi",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -18,7 +18,7 @@
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "morgan": "^1.9.0",
-    "nodemon": "^1.17.1",
+    "nodemon": "^1.18.9",
     "qs": "^6.5.1",
     "response-time": "^2.3.2",
     "serialize-error": "^2.1.0",
