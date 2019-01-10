@@ -29,7 +29,7 @@ module.exports = (request, response) => {
 }
 ```
 
-The handler needs to be compatible with Node >= 9.7.1 ([Babel][5] is not supported but can be used to generate the handler beforehand).
+The handler needs to be compatible with Node >= 10.15.0 ([Babel][5] is not supported but can be used to generate the handler beforehand).
 
 ### Running
 
