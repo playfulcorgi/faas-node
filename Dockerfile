@@ -1,4 +1,4 @@
-FROM node:9.7.1
+FROM node:10.15.0
 ENV HANDLER_FILE_SUBPATH="index.js"
 ENV WATCH="true"
 EXPOSE 8888
